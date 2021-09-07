@@ -4,8 +4,10 @@ import {
   theme,
 } from "@chakra-ui/react"
 
+import { Router } from "./Router";
+
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <h1>Covid stats</h1>
+    <Router />
   </ChakraProvider>
 )
