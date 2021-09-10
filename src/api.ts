@@ -14,10 +14,11 @@ export const logInWithEmail = async ({
   await delay(2000);
 
   // Fake auth responses
-  if (email === "test@test.com" && password === "test1234") {
+  if (email === "john.doe@test.com" && password === "test1234") {
     return Promise.resolve({
       email,
-      username: "John Doe",
+      name: "John Doe",
+      avatar: "https://uifaces.co/our-content/donated/n4Ngwvi7.jpg",
     });
   } else {
     return Promise.reject();

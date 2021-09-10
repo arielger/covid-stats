@@ -1,11 +1,32 @@
 import * as React from "react";
-// import { Link } from "react-router-dom";
+import { Flex, Heading, Avatar, Button } from "@chakra-ui/react";
+
+import { useAuth } from "../modules/auth";
 
 function NavBar() {
+  const {
+    auth: { user },
+    actions: { signOut },
+  } = useAuth();
+
+  console.log("user", user);
+
   return (
-    <div>
-      <h2>Navbar</h2>
-    </div>
+    <Flex
+      w="100%"
+      h="60px"
+      justifyContent="space-between"
+      alignItems="center"
+      backgroundColor="blue.800"
+      color="white"
+      px={4}
+    >
+      <Heading size="md">Covid stats</Heading>
+      <Button onClick={signOut} variant="link" ml="auto" mr="4" color="white">
+        Sign out
+      </Button>
+      <Avatar size="sm" src={user?.avatar} name={user?.name} />
+    </Flex>
   );
 }
 

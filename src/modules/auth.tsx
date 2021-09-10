@@ -8,7 +8,8 @@ type AuthState = {
   isAuthenticated: boolean;
   user?: {
     email: string;
-    username: string;
+    name: string;
+    avatar?: string;
   };
 };
 
@@ -16,6 +17,7 @@ type ContextType = {
   auth: AuthState;
   actions: {
     signIn: any;
+    signOut: () => void;
   };
 };
 
@@ -44,6 +46,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
       },
     }),
+    signOut: () => {
+      localStorage.removeItem("auth");
+      setAuth({
+        isAuthenticated: false,
+      });
+    },
   };
 
   return (
