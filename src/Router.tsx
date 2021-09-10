@@ -5,8 +5,6 @@ import { Login } from "./screens/Login";
 import { Countries } from "./screens/Countries";
 import { CountryCovidCases } from "./screens/CountryCovidCases";
 
-import { useAuth } from "./modules/auth";
-
 import { NavBar } from "./components/NavBar";
 
 export const Router = () => {

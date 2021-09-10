@@ -12,12 +12,14 @@ type AuthState = {
   };
 };
 
-const authContext = createContext<{
+type ContextType = {
   auth: AuthState;
   actions: {
     signIn: any;
   };
-}>(null!);
+};
+
+const authContext = createContext<ContextType>({} as ContextType);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const toast = useToast();
