@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 
 import { Login } from "./screens/Login";
 import { Countries } from "./screens/Countries";
@@ -23,6 +23,7 @@ export const Router = () => {
           <NavBar />
           <CountryCovidCases />
         </AuthRoute>
+        <Redirect to="/login" />
       </Switch>
     </BrowserRouter>
   );
