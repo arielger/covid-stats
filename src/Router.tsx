@@ -15,7 +15,7 @@ export const Router = () => {
         <AuthRoute enableForAuth={false} path="/login">
           <Login />
         </AuthRoute>
-        <AuthRoute enableForAuth={true} path="/countries">
+        <AuthRoute enableForAuth={true} exact path="/countries">
           <NavBar />
           <Countries />
         </AuthRoute>
