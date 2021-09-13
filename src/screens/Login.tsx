@@ -35,13 +35,18 @@ export const Login = () => {
   const isEmailValid = formState.email && validateEmail(formState.email);
   const isPasswordValid = formState.password && formState.password.length > 6;
 
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (isEmailValid && isPasswordValid) signIn.mutate(formState);
+  };
+
   return (
     <Box pt="16" backgroundColor="gray.100" minH="100vh">
       <Heading mb="8" textAlign="center">
         Covid stats
       </Heading>
       <Container backgroundColor="white" borderRadius="6" p="8" shadow="base">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <FormControl isInvalid={!isEmailValid} isRequired id="email" mb="4">
             <FormLabel>Email</FormLabel>
             <Input
@@ -73,9 +78,7 @@ export const Login = () => {
             colorScheme="blue"
             w="100%"
             size="lg"
-            onClick={() => {
-              signIn.mutate(formState);
-            }}
+            type="submit"
             isDisabled={!isEmailValid || !isPasswordValid}
             isLoading={signIn.isLoading}
           >
