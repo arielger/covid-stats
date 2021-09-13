@@ -17,7 +17,7 @@ export const Countries = () => {
   const { data: countries, isLoading, isError } = useCountries();
 
   return (
-    <Container py="10">
+    <Container maxW="container.md" py="10">
       <Heading mb="4">Countries</Heading>
       <Flex direction="column">
         {isLoading ? (
@@ -48,7 +48,7 @@ export const Countries = () => {
                   src={`https://www.countryflags.io/${country.ISO2.toLowerCase()}/flat/64.png`}
                   boxSize="30px"
                   mr="4"
-                  alt={`${country.Country} flag`}
+                  alt=""
                 />
 
                 <Text fontSize="lg">{country.Country}</Text>

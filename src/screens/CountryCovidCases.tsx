@@ -57,7 +57,7 @@ export const CountryCovidCases = () => {
   );
 
   return (
-    <Container py="10">
+    <Container maxW="container.md" py="10">
       <Heading mb="4">{countryName}</Heading>
       <Flex direction="column">
         {isLoading ? (
