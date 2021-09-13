@@ -37,3 +37,11 @@ export const fetchCountries = async () => {
     .then(handleErrors)
     .then((response) => response.json());
 };
+
+export const fetchCountryCases = async (countrySlug: string) => {
+  return fetch(
+    `https://api.covid19api.com/total/dayone/country/${countrySlug}/status/confirmed`
+  )
+    .then(handleErrors)
+    .then((response) => response.json());
+};

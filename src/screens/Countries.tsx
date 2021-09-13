@@ -26,7 +26,13 @@ export const Countries = () => {
           <Text>There was an error fetching the countries list</Text>
         ) : (
           countries?.map((country) => (
-            <Link key={country.Slug} to={`/countries/${country.Slug}`}>
+            <Link
+              key={country.Slug}
+              to={{
+                pathname: `/countries/${country.Slug}`,
+                state: { countryName: country.Country },
+              }}
+            >
               <Flex
                 role="group"
                 alignItems="center"

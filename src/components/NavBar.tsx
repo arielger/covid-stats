@@ -9,8 +9,6 @@ function NavBar() {
     actions: { signOut },
   } = useAuth();
 
-  console.log("user", user);
-
   return (
     <Flex
       w="100%"
