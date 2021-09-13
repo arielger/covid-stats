@@ -6,6 +6,7 @@ import {
   Text,
   Heading,
   Table,
+  TableCaption,
   Thead,
   Th,
   Tbody,
@@ -104,6 +105,11 @@ export const CountryCovidCases = () => {
               />
             </Flex>
             <Table variant="simple" size="sm">
+              {sortedCases?.length === 0 && (
+                <TableCaption placement="bottom">
+                  There are no cases information for this country
+                </TableCaption>
+              )}
               <Thead>
                 <Tr>
                   <Th>Date</Th>
