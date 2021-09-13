@@ -17,6 +17,7 @@ type CountryDayCases = {
   Lat: string;
   Lon: string;
   Cases: number;
+  DailyCases: number;
   Status: string;
   Date: string;
 };
@@ -39,7 +40,20 @@ export const useCountries = () => {
 };
 
 export const useCountry = (countrySlug: string) => {
-  return useQuery<CountryDayCases[]>(`country.${countrySlug}`, () =>
-    fetchCountryCases(countrySlug)
-  );
+  return useQuery<CountryDayCases[]>(`country.${countrySlug}`, async () => {
+    const countryCases = (await fetchCountryCases(
+      countrySlug
+    )) as CountryDayCases[];
+
+    // Add a new property to know daily cases (instead of total)
+    let casesToDate = 0;
+    return countryCases.map((dailyCountryCases) => {
+      const result = {
+        ...dailyCountryCases,
+        DailyCases: dailyCountryCases.Cases - casesToDate,
+      };
+      casesToDate = dailyCountryCases.Cases;
+      return result;
+    });
+  });
 };
