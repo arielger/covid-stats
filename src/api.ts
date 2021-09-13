@@ -4,6 +4,13 @@ function delay(ms: number) {
   });
 }
 
+function handleErrors(response: any) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
+
 export const logInWithEmail = async ({
   email,
   password,
@@ -23,4 +30,10 @@ export const logInWithEmail = async ({
   } else {
     return Promise.reject();
   }
+};
+
+export const fetchCountries = async () => {
+  return fetch("https://api.covid19api.com/countries")
+    .then(handleErrors)
+    .then((response) => response.json());
 };
